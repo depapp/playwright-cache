@@ -1,4 +1,5 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
+import { devices } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -44,9 +45,23 @@ const config: PlaywrightTestConfig = {
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'Google Chrome',
+      name: 'chromium',
       use: {
-        channel: 'chrome',
+        ...devices['Desktop Chrome'],
+      },
+    },
+
+    {
+      name: 'firefox',
+      use: {
+        ...devices['Desktop Firefox'],
+      },
+    },
+
+    {
+      name: 'webkit',
+      use: {
+        ...devices['Desktop Safari'],
       },
     },
 
